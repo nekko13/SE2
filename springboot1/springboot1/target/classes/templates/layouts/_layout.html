@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee Management System</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<nav>
+    <a href="/employee/list">Employee List</a>
+    <a href="/employee/add">Add Employee</a>
+    <a href="/company/list">Company List</a>
+    <a href="/company/add">Add Company</a>
+</nav>
+<div layout:fragment="content">
+    <!-- content page will override this -->
+</div>
+<script>
+    let comId = [[${ comId }]];
+    let sortMode = [[${ sortMode }]];
+    function filterRedirect() {
+        let url = "/employee/list?company=" + comId + "&sort=" + sortMode;
+        window.location.href = url; // redirect
+    }
+    window.addEventListener("load", function () {
+        const comFilter = document.getElementById("filterCompany");
+        comFilter.value = comId;
+        comFilter.addEventListener("change", function (e) {
+            comId = e.target.value;
+            filterRedirect();
+        });
+        const sortMenu = document.getElementById("sortOptions");
+        sortMenu.value = sortMode;
+        sortMenu.addEventListener("change", function (e) {
+            sortMode = e.target.value;
+            filterRedirect();
+        });
+    });
+</script><script>
+    let comId = [[${ comId }]];
+    let sortMode = [[${ sortMode }]];
+    function filterRedirect() {
+        let url = "/employee/list?company=" + comId + "&sort=" + sortMode;
+        window.location.href = url; // redirect
+    }
+    window.addEventListener("load", function () {
+        const comFilter = document.getElementById("filterCompany");
+        comFilter.value = comId;
+        comFilter.addEventListener("change", function (e) {
+            comId = e.target.value;
+            filterRedirect();
+        });
+        const sortMenu = document.getElementById("sortOptions");
+        sortMenu.value = sortMode;
+        sortMenu.addEventListener("change", function (e) {
+            sortMode = e.target.value;
+            filterRedirect();
+        });
+    });
+</script>
+</body>
+</html>
